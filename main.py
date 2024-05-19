@@ -1,16 +1,16 @@
 from input_parser import parse_input
-from address_book import AddressBook
 import phone_base
 
 
 def main():
-    book = AddressBook()
+    book = phone_base.load_data()
     print("Welcome to the assistant bot!")
     while True:
         user_input = input("Enter a command: ").strip().lower()
         command, *args = parse_input(user_input)
 
         if command in ["close", "exit"]:
+            phone_base.save_data(book)
             print("Good bye!")
             break
 
